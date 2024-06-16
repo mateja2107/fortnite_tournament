@@ -2,15 +2,20 @@ const currentRoundSpan = document.querySelector("#curr_round_num");
 const roundsNumberSpan = document.querySelector("#rounds_num");
 const playersTable = document.querySelector("#tournament_table");
 
-let currentRound = 1;
+let currentRound;
+if (localStorage.getItem("current_round")) {
+  currentRound = Number(localStorage.getItem("current_round"));
+} else {
+  currentRound = 1;
+  localStorage.setItem("current_round", currentRound);
+}
+
 window.onload = (e) => loadPlayers();
 
 let nextRoundBtn = document.querySelector("#nextRoundBtn");
 
 nextRoundBtn.onclick = (e) => {
   if (confirm("Da li ste sigurni da zelite da pokrenete sledecu rundu?")) {
-    currentRound += 1;
-
     getNumberOfRounds().then((roundsNumber) => {
       if (currentRound <= roundsNumber) {
         currentRoundSpan.innerText = currentRound;
@@ -27,7 +32,18 @@ nextRoundBtn.onclick = (e) => {
           });
         });
 
-        updatePlayersData(playersRoundData).then(() => loadPlayers());
+        saveRoundData(playersRoundData, currentRound)
+          .then(() => updatePlayersData(playersRoundData))
+          .then(() => {
+            if (currentRound == roundsNumber) {
+              window.location.href = "final_results.html";
+            } else {
+              currentRound += 1;
+              localStorage.setItem("current_round", currentRound);
+
+              loadPlayers();
+            }
+          });
       }
     });
   }

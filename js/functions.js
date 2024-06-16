@@ -81,7 +81,7 @@ async function loadPlayers() {
             <th scope="row">${player.id}.</th>
             <td class="username_wrapper">${player.username}</td>
             <td><input type="number" class="table_input form-control elims" value="0" /></td>
-            <td><input type="checkbox" tabindex="-1" class="table_input form-control" value="${player.victory_royale}" /></td>
+            <td><input type="checkbox" tabindex="-1" class="table_input form-control" /></td>
             <td>${player.points}</td>
           </tr>`;
     }
@@ -111,7 +111,6 @@ async function updatePlayersData(data) {
   players = players[0];
 
   let n = Object.entries(players).length;
-  console.log(n);
   for (let i = 0; i < n - 1; i++) {
     let player = players[i];
 
@@ -145,4 +144,19 @@ async function updatePlayersData(data) {
 
   res = await res.json();
   return res;
+}
+
+async function saveRoundData(data, round) {
+  let res = await fetch(
+    "https://66672d2ea2f8516ff7a699c9.mockapi.io/Rounds/" + round,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  res = res.json();
 }
