@@ -11,10 +11,10 @@ window.onload = () => {
 
       let html = ``;
       table.innerHTML = "";
-      players.forEach((player) => {
+      players.forEach((player, i) => {
         html += `
         <tr data-player_id="${player.id}">
-          <th scope="row">${player.id}.</th>
+          <td class="num">${i + 1}.</td   >
           <td class="username_wrapper">${player.username}</td>
           <td>${player.elims}</td>
           <td>${player.victory_royale}</td>
@@ -25,3 +25,26 @@ window.onload = () => {
       table.innerHTML = html;
     });
 };
+
+fetch("https://66672d2ea2f8516ff7a699c9.mockapi.io/Rounds").then(res => res.json()).then(data => {
+  let length = data.length;
+  if(Object.keys(data[length - 1]) == "id") {
+    return [length, true];
+  } else {
+    return [length, false];
+  }
+}).then(rounds => {
+  console.log(rounds);
+  let last_round = rounds[1];
+  rounds = rounds[0];
+
+  const title = document.querySelector("#results_title");
+
+  if(rounds > 0) {
+    if(Number(localStorage.getItem("current_round")) <= rounds && last_round) {
+      title.textContent = "STANDINGS";
+    } else {
+      title.textContent = "FINAL RESULTS";
+    }
+  }
+});

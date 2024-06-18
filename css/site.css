@@ -14,3 +14,7 @@ header {
 header p {
   margin: 0;
 }
+
+.wrapper {
+  max-width: 900px;
+}

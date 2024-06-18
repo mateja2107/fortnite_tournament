@@ -19,60 +19,54 @@
       </div>
     </header>
 
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-6">
-          <h2>Tournament Setup</h2>
+    <div class="wrapper mt-5">
+      <div class="col">
+        <h2>Tournament Setup</h2>
 
-          <label for="number_of_rounds">Broj Rudni: </label>
+        <label for="number_of_rounds">Broj Rundi: </label>
+        <input
+          type="number"
+          name="number_of_rounds"
+          id="number_of_rounds"
+          placeholder="Broj rundi"
+          class="form-control mb-3"
+        />
+        <hr />
+
+        <form>
+          <label for="username">Unesi Ime Tima: </label>
           <input
-            type="number"
-            name="number_of_rounds"
-            id="number_of_rounds"
-            placeholder="Broj rundi"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Ime Igraca"
             class="form-control mb-3"
           />
-          <hr />
-
-          <form>
-            <label for="username">Unesi Ime Igraca: </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Ime Igraca"
-              class="form-control mb-3"
-            />
-            <button
-              id="add_player_btn"
-              type="submit"
-              class="btn btn-primary form-control mb-3"
-            >
-              Unesi Igraca
-            </button>
-          </form>
-          <hr />
-
-          <h2>Igraci (<span id="number_of_playeers">0</span>):</h2>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Username</th>
-              </tr>
-            </thead>
-            <tbody id="players_list"></tbody>
-          </table>
-          <hr />
-
           <button
-            type="button"
-            class="btn btn-success"
-            id="start_tournament_btn"
+            id="add_player_btn"
+            type="submit"
+            class="btn btn-primary form-control mb-3"
           >
-            Pokreni Turnir
+            Unesi Tim
           </button>
-        </div>
+        </form>
+        <hr />
+
+        <h2>Timovi (<span id="number_of_playeers">0</span>):</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Username</th>
+            </tr>
+          </thead>
+          <tbody id="players_list"></tbody>
+        </table>
+        <hr />
+
+        <button type="button" class="btn btn-success" id="start_tournament_btn">
+          Pokreni Turnir
+        </button>
       </div>
     </div>
 

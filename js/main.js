@@ -8,9 +8,10 @@ addPlayerBtn.onclick = (e) => {
   let username = usernameInput.value;
   let tableBody = document.querySelector("#players_list");
 
-  let numberOfPlayersSpan = document.querySelector("#number_of_playeers");
-  numberOfPlayersSpan.innerText = Number(numberOfPlayersSpan.innerText) + 1;
   if (username != "") {
+    let numberOfPlayersSpan = document.querySelector("#number_of_playeers");
+    numberOfPlayersSpan.innerText = Number(numberOfPlayersSpan.innerText) + 1;
+    
     let html = "";
     let id = tableBody.querySelectorAll("tr").length + 1;
 

@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Burbank";
+    src: url("burbank.otf") format("opentype");
+  }  
+
+html, body {
+    height: 100vh;
+    font-family: "Burbank" !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+h1 {
+    font-size: 6rem;
+    /* margin-bottom: em; */
+    margin-top: 30px;
+    margin-left: 78px;
+    text-align: center;
+}
+
+table {
+    
+    font-size: 3.5em;
+    border-spacing: 0.8em 0.3em;
+}
+
+.table {
+    align-self: center;
+}
+
+td {
+    padding: 0 1em;
+    text-align: center;
+    background: rgb(63, 12, 140);
+    border: 3px solid white;
+}

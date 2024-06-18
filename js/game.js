@@ -36,7 +36,7 @@ nextRoundBtn.onclick = (e) => {
           .then(() => updatePlayersData(playersRoundData))
           .then(() => {
             if (currentRound == roundsNumber) {
-              window.location.href = "final_results.html";
+              // window.location.href = "final_results.html";
             } else {
               currentRound += 1;
               localStorage.setItem("current_round", currentRound);
