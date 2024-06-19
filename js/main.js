@@ -1,5 +1,6 @@
 //* add player
 let addPlayerBtn = document.querySelector("#add_player_btn");
+const bc = new BroadcastChannel("refresh_channel");
 
 addPlayerBtn.onclick = (e) => {
   e.preventDefault();
@@ -33,6 +34,7 @@ startTournamentBtn.onclick = (e) => {
   e.preventDefault();
 
   if (confirm("Da li ste sigurni da zelite da pokrenete turnir?")) {
+    bc.postMessage("refresh");
     let rounds = document.querySelector("#number_of_rounds").value;
 
     let players = document.querySelectorAll("#players_list tr");

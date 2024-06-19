@@ -1,6 +1,7 @@
 const currentRoundSpan = document.querySelector("#curr_round_num");
 const roundsNumberSpan = document.querySelector("#rounds_num");
 const playersTable = document.querySelector("#tournament_table");
+const bc = new BroadcastChannel("refresh_channel");
 
 let currentRound;
 if (localStorage.getItem("current_round")) {
@@ -16,6 +17,8 @@ let nextRoundBtn = document.querySelector("#nextRoundBtn");
 
 nextRoundBtn.onclick = (e) => {
   if (confirm("Da li ste sigurni da zelite da pokrenete sledecu rundu?")) {
+    bc.postMessage("refresh");
+    
     getNumberOfRounds().then((roundsNumber) => {
       if (currentRound <= roundsNumber) {
         currentRoundSpan.innerText = currentRound;

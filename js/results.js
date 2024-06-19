@@ -1,3 +1,5 @@
+const bc = new BroadcastChannel("refresh_channel");
+
 window.onload = () => {
   let table = document.querySelector("#final_results_table");
 
@@ -12,14 +14,16 @@ window.onload = () => {
       let html = ``;
       table.innerHTML = "";
       players.forEach((player, i) => {
-        html += `
-        <tr data-player_id="${player.id}">
+        if (i < 8) {
+          html += `
+          <tr data-player_id="${player.id}">
           <td class="num">${i + 1}.</td   >
           <td class="username_wrapper">${player.username}</td>
           <td>${player.elims}</td>
           <td>${player.victory_royale}</td>
           <td>${player.points}</td>
         </tr>`;
+        }
       });
 
       table.innerHTML = html;
@@ -48,3 +52,25 @@ fetch("https://66672d2ea2f8516ff7a699c9.mockapi.io/Rounds").then(res => res.json
     }
   }
 });
+
+window.addEventListener('obsSceneChanged', function(event) {
+  
+  if (event.detail.name == 'Results') {
+    let rows = document.querySelectorAll('#final_results_table tr')
+    let thead = document.querySelector('table thead')
+
+    thead.classList.add('appearanim')
+
+    rows.forEach((v,i) => {
+      setTimeout(() => v.classList.add('appearanim'),i*100)
+    })
+  } else {
+    location.reload()
+  }
+})
+
+bc.onmessage = (event) => {
+  if (event.data == 'refresh') {
+    location.reload()
+  }
+};

@@ -7,7 +7,29 @@
 @font-face {
     font-family: "Burbank";
     src: url("burbank.otf") format("opentype");
-  }  
+  }
+
+
+@font-face {
+	font-family: "headingnow";
+	src: url("headingnow.woff2") format("woff2");
+} 
+
+@keyframes appear {
+	0% {opacity: 0%;
+		scale: 1;
+		transform: scale(0);
+	}
+
+	50% {
+		transform: scale(1.05);
+	}
+
+	100% {
+		opacity: 100%;
+		transform: scale(1);
+	}
+}
 
 html, body {
     height: 100vh;
@@ -19,9 +41,11 @@ html, body {
 }
 
 h1 {
-    font-size: 6rem;
-    /* margin-bottom: em; */
-    margin-top: 30px;
+	font-family: "headingnow";
+	font-variation-settings: "wdth" 668,"wght" 700;
+    font-size: 7rem;
+    margin-bottom: 60px;
+    margin-top: 60px;
     margin-left: 78px;
     text-align: center;
 }
@@ -37,8 +61,34 @@ table {
 }
 
 td {
+	line-height: 100%;
     padding: 0 1em;
     text-align: center;
     background: rgb(63, 12, 140);
     border: 3px solid white;
+}
+
+table thead {
+	opacity: 0%;
+}
+
+#final_results_table tr:first-child td {
+    color: rgb(63, 12, 140);
+    background: rgb(63, 12, 140);
+    background: linear-gradient(180deg, rgba(54,232,192,1) 0%, rgba(21,233,217,1) 100%);
+    border: 1px solid white;
+}
+
+#final_results_table tr {
+	opacity: 0%;
+}
+
+#final_results_table tr:first-child td.num {
+    
+}
+
+.appearanim {
+	animation-name: appear;
+	animation-fill-mode: forwards;
+	animation-duration: 0.5s;
 }
