@@ -19,29 +19,10 @@
       </div>
     </header>
 
-    <div class="container">
-      <h2 class="mt-5">
-        Runda <span id="curr_round_num"></span>/<span id="rounds_num"></span>
-      </h2>
-      <hr />
-      <small>*Kolona "Points" je broj poena svakog igraca pre ove runde</small>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Elims</th>
-            <th scope="col">VR</th>
-            <th scope="col">Points</th>
-          </tr>
-        </thead>
-        <tbody id="tournament_table"></tbody>
-      </table>
-      <hr />
-      <button id="nextRoundBtn" class="btn btn-success">Sledeca Runda</button>
-      <a class="btn btn-info" style="color: #fff" href="rounds_view.html"
-        >Rezultati Po Rundama</a
-      >
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-6" id="rounds_view_wrapper"></div>
+      </div>
     </div>
 
     <script
@@ -59,7 +40,6 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="js/functions.js"></script>
-    <script src="js/game.js"></script>
+    <script src="js/load_rounds.js"></script>
   </body>
 </html>
